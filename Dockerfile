@@ -6,7 +6,9 @@ RUN apt-get update && \
     pip3 install ansible && \
     rm -rf /var/lib/apt/lists/*
 
-RUN   echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+RUN \
+        echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config && \
+    echo "    IdentityFile ~/.ssh/sparta2/suppgit" >> /etc/ssh/ssh_config
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
