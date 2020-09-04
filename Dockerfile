@@ -2,9 +2,12 @@ FROM ubuntu:16.04
 RUN apt-get update && \
     apt-get install --no-install-recommends -y software-properties-common && \
     add-apt-repository ppa:deadsnakes/ppa && \
-    apt install -y python3 python3-pip git && \
+    apt-get update && \
+    apt install -y python3.7 python3-pip git && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 3 && \
+    pip3 install --upgrade pip && \
     pip3 install ansible && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* 
 
 RUN \
         echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config && \
