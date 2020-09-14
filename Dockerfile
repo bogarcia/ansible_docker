@@ -7,6 +7,7 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 3 && \
     pip3 install --upgrade pip && \
     pip3 install ansible && \
+    pip3 install hvac && \
     rm -rf /var/lib/apt/lists/* 
 
 RUN \
